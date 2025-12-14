@@ -14,23 +14,21 @@ public class BulletController : MonoBehaviour
     // Collider의 "Is Trigger"가 체크되어 있어야 작동합니다.
     void OnTriggerEnter(Collider other)
     {
-        // 충돌한 물체의 태그가 "Enemy"(좀비)인지 확인
-        if (other.CompareTag("Enemy"))
+
+        // 맞은 부위의 부모, 부모의 부모까지 뒤져서 좀비 스크립트를 찾음
+        ZombieAI zombie = other.GetComponentInParent<ZombieAI>();
+
+        // 좀비 스크립트를 찾았다면?
+        if (zombie != null)
         {
-            // TODO: 나중에 여기에 좀비 체력을 깎는 코드를 추가해야 합니다.
-            // 예: other.GetComponent<ZombieHealth>().TakeDamage(damage);
-            Debug.Log("좀비 명중! 데미지: " + damage);
-
-            // 피 이펙트 생성 위치 (선택사항)
-            // Instantiate(bloodEffectPrefab, transform.position, Quaternion.identity);
-
-            Destroy(gameObject); // 총알 파괴
+            zombie.TakeDamage(damage, transform.position);
+            Destroy(gameObject); // 총알 삭제
         }
-        // 장애물이나 땅에 맞았을 때
-        else if (other.CompareTag("Obstacle") || other.CompareTag("Ground"))
+
+        // (참고) 만약 좀비가 아니라 벽에 맞았을 때 삭제하는 로직은 아래에 유지
+        else if (!other.CompareTag("Player") && !other.CompareTag("Bullet"))
         {
-            // 벽 맞은 이펙트 생성 위치 (선택사항)
-            Destroy(gameObject); // 총알 파괴
+            Destroy(gameObject);
         }
     }
 }
