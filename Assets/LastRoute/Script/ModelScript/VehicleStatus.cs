@@ -62,8 +62,12 @@ public class VehicleStatus : MonoBehaviour
         if (rb.linearVelocity.magnitude > 0.1f && currentFuel > 0)
         {
             currentFuel -= fuelConsumptionRate * Time.deltaTime;
-            if (currentFuel <= 0) currentFuel = 0;
+            if (currentFuel <= 0) {
+                currentFuel = 0;
+                Die();
+            }
         }
+ 
     }
 
     public void AddFuel(float amount)
@@ -109,11 +113,11 @@ public class VehicleStatus : MonoBehaviour
         {
             float impactSpeed = collision.relativeVelocity.magnitude;
 
-            if (impactSpeed >= 150f) TakeDamage(60);
-            else if (impactSpeed >= 100f) TakeDamage(40);
-            else if (impactSpeed >= 70f) TakeDamage(30);
-            else if (impactSpeed >= 40f) TakeDamage(20);
-            else if (impactSpeed >= 20f) TakeDamage(10);
+            if (impactSpeed >= 150f) TakeDamage(40);
+            else if (impactSpeed >= 100f) TakeDamage(25);
+            else if (impactSpeed >= 70f) TakeDamage(20);
+            else if (impactSpeed >= 40f) TakeDamage(5);
+            else if (impactSpeed >= 20f) TakeDamage(2);
         }
     }
 
@@ -124,13 +128,13 @@ public class VehicleStatus : MonoBehaviour
 
         UpdateUI();
 
-        // 1. 연결된 차량 컨트롤러 끄기 (이제 부모에 있든 어디에 있든 상관없음)
+        // 1. 연결된 차량 컨트롤러 끄기
         if (carController != null)
         {
             carController.enabled = false;
         }
 
-        // 2. 포탑 회전 스크립트 끄기 (자식에 있으므로 그대로 둠)
+        // 2. 포탑 회전 스크립트 끄기
         var turret = GetComponentInChildren<TurretShootingController>();
         if (turret != null) turret.enabled = false;
 

@@ -190,7 +190,7 @@ public class ZombieAI : MonoBehaviour
 
                 if (carStatus != null)
                 {
-                    carStatus.TakeDamage(5f);
+                    carStatus.TakeDamage(2f);
                 }
 
                 Die(true, collision.relativeVelocity);

@@ -79,9 +79,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f;          // 시간 정지
             isControlActive = false;      // 조작 차단
 
-            // (만약 마우스가 안 보인다면 아래 주석 해제)
-            // Cursor.visible = true;
-            // Cursor.lockState = CursorLockMode.None;
+
         }
         else
         {
@@ -89,9 +87,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;          // 시간 흐름
             isControlActive = true;       // 조작 허용
 
-            // (FPS 모드라면 다시 마우스 잠금 필요할 수 있음)
-            // Cursor.visible = false;
-            // Cursor.lockState = CursorLockMode.Locked;
         }
     }
 

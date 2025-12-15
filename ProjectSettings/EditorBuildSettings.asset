@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/LastRoute/Scenes/MainMenu.unity
     guid: 4c1f7bc16210def40b65850c921257a7
   - enabled: 1
+    path: Assets/LastRoute/Scenes/DemoAsteroids-LobbyScene.unity
+    guid: 2fe12c04f06019f43bf853d8c6a59e08
+  - enabled: 1
     path: Assets/LastRoute/Scenes/Play.unity
     guid: 635b079c5c1ca5940848306586de7299
+  - enabled: 1
+    path: Assets/LastRoute/Scenes/Multiplay.unity
+    guid: fe419250a8e37e142ac38dc7e5fb3de1
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
