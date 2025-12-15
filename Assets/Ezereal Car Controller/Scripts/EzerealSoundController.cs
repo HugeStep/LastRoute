@@ -11,7 +11,7 @@ namespace Ezereal
         [SerializeField] AudioSource engineAudio;
 
         [Header("Settings")]
-        public float maxVolume = 0.5f; // Maximum volume for high speeds
+        public float maxVolume = 0.9f; // Maximum volume for high speeds
 
         [Header("Debug")]
         [SerializeField] bool alreadyPlaying;
@@ -81,7 +81,7 @@ namespace Ezereal
                     float speed = ezerealCarController.vehicleRB.linearVelocity.magnitude;
 
                     // Calculate the volume based on speed
-                    float targetVolume = Mathf.Clamp01(speed / 15) * maxVolume;
+                    float targetVolume = Mathf.Clamp01(speed / 30) * maxVolume;
 
 
                     tireAudio.volume = targetVolume;
@@ -93,7 +93,7 @@ namespace Ezereal
 
                     //Engine Pitch
 
-                    float engineSoundPitch = 0.8f + (Mathf.Abs(ezerealCarController.vehicleRB.linearVelocity.magnitude) / 25f);
+                    float engineSoundPitch = 0.9f + (Mathf.Abs(ezerealCarController.vehicleRB.linearVelocity.magnitude) / 30f);
                     engineAudio.pitch = engineSoundPitch;
 #else
             if (ezerealCarController != null && ezerealCarController.vehicleRB != null && tireAudio != null && engineAudio != null)

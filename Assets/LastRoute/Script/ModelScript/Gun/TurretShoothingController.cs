@@ -35,11 +35,13 @@ public class TurretShootingController : MonoBehaviour
     private float nextFireTime = 0f;
     private Camera mainCamera;
     private AudioSource audioSource;
+    public VehicleStatus vehicleStatus; // 차량 상태 스크립트 연결
 
     void Start()
     {
         mainCamera = Camera.main;
         audioSource = GetComponent<AudioSource>();
+        vehicleStatus = GetComponentInParent<VehicleStatus>();
     }
 
     void Update()
@@ -95,6 +97,14 @@ public class TurretShootingController : MonoBehaviour
 
     void Shoot()
     {
+        if (vehicleStatus != null)
+        {
+            if (vehicleStatus.TryConsumeAmmo() == false)
+            {
+                // 탄약 없으면 발사 안 함
+                return;
+            }
+        }
         // 1. 소리 재생
         PlayFireSound();
 

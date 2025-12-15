@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "Ezereal Car Controller",
     "maps": [
         {
@@ -290,7 +291,7 @@
                     "id": "a340b63f-a5fd-49a4-aad6-cebba8aa0f84",
                     "path": "<Pointer>/delta",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2",
                     "groups": "",
                     "action": "Look",
                     "isComposite": false,
